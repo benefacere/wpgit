@@ -9,12 +9,12 @@ then
   exit $E_USAGE
 fi
 
-EXPECTED_ARGS=1
+EXPECTED_ARGS=3
 E_BADARGS=65
 
 if [ $# -ne $EXPECTED_ARGS ]
 then
-  echo "Usage: bash wpgitinit.sh httpsgit"
+  echo "Usage: bash wpgitinit.sh httpsgit gituseremail gitusername"
   exit $E_BADARGS
 fi
 
@@ -42,6 +42,8 @@ fi
 # GIT
 git init
 git remote add origin $1
+git config user.email $2
+git config user.name $3
 git fetch
 git checkout -t origin/master
 
