@@ -9,7 +9,7 @@ then
   exit $E_USAGE
 fi
 
-EXPECTED_ARGS=3
+EXPECTED_ARGS=4
 E_BADARGS=65
 
 if [ $# -ne $EXPECTED_ARGS ]
