@@ -46,7 +46,14 @@ git remote add origin $1
 git config user.email $2
 git config user.name $3
 git fetch
-git checkout -t origin/master
+read -p "Restore tag (attention, cela va creer une branche) ? <y/N> " avectag
+if [[ $avectag == "y" || $avectag == "Y" || $avectag == "yes" || $avectag == "Yes" ]]
+then
+	read -p "Nom tag : " letag
+	git checkout -b version$letag $letag
+else
+	git checkout -t origin/master
+fi
 
 # Fonction de sortie de script :
 die() {
