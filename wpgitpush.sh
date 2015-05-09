@@ -9,12 +9,13 @@ then
   exit $E_USAGE
 fi
 
-EXPECTED_ARGS=1
+EXPECTED_ARGS=3
 E_BADARGS=65
 
 if [ $# -ne $EXPECTED_ARGS ]
 then
-  echo "Usage: bash wpgitpush.sh mode ; avec mode = commit pour fonctionnement planifie ou mode= tag sinon"
+  echo "Usage: bash wpgitpush.sh mode gituseremail gitusername"
+  echo "Valeurs: mode = commit pour fonctionnement planifie ou mode= tag sinon"
   exit $E_BADARGS
 fi
 
@@ -48,11 +49,7 @@ then
 	fi
 	
 	read -p "HTTPS GIT (avec ou sans mdp) : " httpsgit
-	read -p "User name git : " gitname
-	read -p "User email Git : " gitmail
 	git init
-	git config user.email $gitmail
-	git config user.name $gitname
 	git remote add origin $httpsgit
 	touch .gitignore
 	echo 'htdocs/wp-content/cache/*' > .gitignore
@@ -64,6 +61,10 @@ then
 	# echo 'htdocs/robots.txt' >> .gitignore
 	git add .
 fi	
+
+git config user.email $2
+git config user.name $3
+
 ladate=`date +"%d-%m-%y"`
 git commit -a -m "commit $ladate"
 
