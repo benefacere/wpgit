@@ -14,7 +14,7 @@ E_BADARGS=65
 
 if [ $# -ne $EXPECTED_ARGS ]
 then
-  echo "Usage: bash wpgitinit.sh httpsgitavecmdp gituseremail gitusername"
+  echo "Usage: bash wpgitinit.sh httpsgit gituseremail gitusername"
   exit $E_BADARGS
 fi
 
