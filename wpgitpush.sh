@@ -14,7 +14,7 @@ E_BADARGS=65
 
 if [ $# -ne $EXPECTED_ARGS ]
 then
-  echo "Usage: bash wpgitpush.sh mode ; avec mode = justcommit pour fonctionnement planifie"
+  echo "Usage: bash wpgitpush.sh mode ; avec mode = commit pour fonctionnement planifie ou mode= tag sinon"
   exit $E_BADARGS
 fi
 
@@ -24,7 +24,7 @@ die() {
         exit 1 ;
 }
 
-if [$1 != "justcommit"]
+if [ $1 != "commit" ]
 then
 	read -p "Dump de la base ? <y/N> " prompt
 	if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]
@@ -39,11 +39,11 @@ then
 fi
 
 # Creation du repo local git et init si besoin
-if [ ! -d .git]
+if [ ! -d .git ]
 then
-	if [$1 == "justcommit"]
+	if [ $1 == "commit" ]
 	then
-		echo "Git push ko, init pas possible en mode justcommit."
+		echo "Git push ko, init pas possible en mode commit."
 		exit 1 ;
 	fi
 	
@@ -67,7 +67,7 @@ fi
 ladate=`date +"%d-%m-%y"`
 git commit -a -m "commit $ladate"
 
-if [$1 != "justcommit"]
+if [ $1 != "commit" ]
 then
 	read -p "Version Tag ? <y/N> " gittag
 	if [[ $gittag == "y" || $gittag == "Y" || $gittag == "yes" || $gittag == "Yes" ]]
