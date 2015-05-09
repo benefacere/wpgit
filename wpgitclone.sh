@@ -14,13 +14,14 @@ E_BADARGS=65
 
 if [ $# -ne $EXPECTED_ARGS ]
 then
-  echo "Usage: bash wpgitinit.sh httpsgit gituseremail gitusername"
+  echo "Usage: bash wpgitclone.sh httpsgit gituseremail gitusername"
   exit $E_BADARGS
 fi
 
 #NETTOYAGE
 rm -rf .git
 rm -rf .gitignore
+rm -rf sqldump
 echo "git deleted"
 rm -rf htdocs/*
 echo "Repertoire htdocs clean"
@@ -59,6 +60,10 @@ then
 	read -p "Nom de la base : " nombdd
 	read -p "Nom user : " userbdd
 	read -p "Passwd de la base : " passwdbdd
+	
+	cd sqldump
+	gunzip $nombdd.sql.gz
+	cd ..
 		
 	# CREATION DE LA BASE
 	MYSQL=`which mysql`
@@ -71,7 +76,7 @@ then
 	Q3="GRANT ALL PRIVILEGES ON $nombdd.* TO $userbdd@localhost;"
 	Q4="FLUSH PRIVILEGES;"
 	Q5="USE $nombdd;"
-	Q6="source ./sqldump/$nombdd.sql.gz;"
+	Q6="source ./sqldump/$nombdd.sql;"
 	SQL="${D0}${D1}${D2}${Q1}${Q2}${Q3}${Q4}${Q5}${Q6}"
 
 	$MYSQL -uroot -p -e "$SQL"
