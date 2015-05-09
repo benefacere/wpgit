@@ -19,6 +19,9 @@ then
 fi
 
 #NETTOYAGE
+rm -rf .git
+rm -rf .gitignore
+echo "git deleted"
 rm -rf htdocs/*
 echo "Repertoire htdocs clean"
 if [ -f htdocs/.htaccess ]
