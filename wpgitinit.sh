@@ -43,6 +43,11 @@ git remote add origin $1
 touch .gitignore
 echo 'htdocs/wp-content/cache/*' > .gitignore
 echo 'htdocs/wp-content/uploads/backwpup*' >> .gitignore
+echo 'wpgitinit.sh' >> .gitignore
+# echo 'wp-config.php' >> .gitignore
+# echo 'htdocs/wp-config.php' >> .gitignore
+# echo 'htdocs/.htaccess' >> .gitignore
+# echo 'htdocs/robots.txt' >> .gitignore
 git add .
 git commit -a -m "commit init"
 git push origin master
