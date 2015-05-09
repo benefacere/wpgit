@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# SE PLACER DANS HTDOCS
+# SE PLACER A LA BASE DU REPERTOIRE VIRTUEL, PAS DANS LE REPERTOIRE HTDOCS
 SITEURL=$(basename $PWD)
 E_USAGE=64
-if [ "$SITEURL" != "htdocs" ]
+if [ "$SITEURL" == "htdocs" ]
 then
-  echo "Usage: dans htdocs mais pas dans un autre répertoire"
+  echo "Usage: pas dans htdocs mais dans le répertoire en dessous, celui du nom de domaine"
   exit $E_USAGE
 fi
 
