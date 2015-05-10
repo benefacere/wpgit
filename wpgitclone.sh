@@ -90,6 +90,15 @@ then
 	[ $? -eq 0 ] || die "Impossible de créer la base et le user, mot de passe mysql incorrect ?" ;		
 fi
 
+# SECU (soit il est dans htdocs soit a la racine)
+if [ -f htdocs/wp-config.php ]
+then
+	chmod 600 htdocs/wp-config.php
+else
+	chmod 600 wp-config.php
+fi
+echo "chmod 600 wp-config"
+
 echo "================================================================="
 echo "Git clone ok."
 echo "================================================================="
