@@ -60,12 +60,12 @@ then
 	# echo 'htdocs/wp-config.php' >> .gitignore
 	# echo 'htdocs/.htaccess' >> .gitignore
 	# echo 'htdocs/robots.txt' >> .gitignore
-	git add .
 fi	
 
 git config user.email $2
 git config user.name $3
 
+git add -A
 ladate=`date +"%d-%m-%y"`
 git commit -a -m "commit $ladate"
 
