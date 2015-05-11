@@ -54,6 +54,7 @@ then
 	touch .gitignore
 	echo 'htdocs/wp-content/cache/*' > .gitignore
 	echo 'htdocs/wp-content/uploads/backwpup*' >> .gitignore
+	echo 'htdocs/wp-content/uploads/wpcf7_captcha/*' >> .gitignore
 	echo 'wpgitpush.sh' >> .gitignore
 	echo 'wpgitclone.sh' >> .gitignore
 	# echo 'wp-config.php' >> .gitignore
