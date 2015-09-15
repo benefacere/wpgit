@@ -61,6 +61,9 @@ then
 	# echo 'htdocs/wp-config.php' >> .gitignore
 	# echo 'htdocs/.htaccess' >> .gitignore
 	# echo 'htdocs/robots.txt' >> .gitignore
+	
+	touch .git/.htaccess
+	echo 'content: Deny from all' > .git/.htaccess
 fi	
 
 git config user.email $2
